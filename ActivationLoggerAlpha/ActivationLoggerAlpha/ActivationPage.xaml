@@ -1,0 +1,55 @@
+<uranium:UraniumContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                            xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+                            x:Class="ActivationLoggerAlpha.ActivationPage"
+                            Title="New Activation">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Padding="20">
+
+            <!-- Callsign -->
+            <Label Text="Activation Operator Callsign" FontAttributes="Bold"/>
+            <Entry x:Name="callsignEntry" />
+
+            <!-- Container for dynamic addition of park info -->
+            <VerticalStackLayout x:Name="parksContainer">
+                <Label Text="Activation Park Number (e.g., US-1402)" FontAttributes="Bold"/>
+                <HorizontalStackLayout>
+                    <!-- Populate Park Info -->
+                    <Button x:Name="populateParkInfoButton" Text="Populate Park Info" WidthRequest="250" />
+                    <!-- Park Number -->
+                    <Entry x:Name="parkNumberEntry" HorizontalOptions="FillAndExpand" />
+                </HorizontalStackLayout>
+
+                <!-- Park Name - Non-editable, populated based on park number -->
+                <Label Text="Park Name" FontAttributes="Bold"/>
+                <Entry x:Name="parkNameEntry" IsReadOnly="True" />
+            </VerticalStackLayout>
+
+            <!-- Grid Square -->
+            <Label Text="Activation Grid Square" FontAttributes="Bold"/>
+            <Entry x:Name="gridSquareEntry" />
+
+            <!-- Operator License -->
+            <Label Text="Operator License Class" FontAttributes="Bold"/>
+            <Picker x:Name="licenseClassPicker" Title="Select License Class">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Tech</x:String>
+                        <x:String>General</x:String>
+                        <x:String>Extra</x:String>
+                        <x:String>Novice</x:String>
+                        <x:String>Advanced</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Action Buttons -->
+            <HorizontalStackLayout>
+                <Button x:Name="confirmButton" Text="Confirm" Clicked="OnConfirmClicked" IsEnabled="False" />
+                <Button Text="Abort" Clicked="OnAbortClicked" />
+                <Button x:Name="addAnotherParkButton" Text="Add another Park" Clicked="OnAddAnotherParkClicked"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</uranium:UraniumContentPage>

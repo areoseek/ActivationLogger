@@ -1,0 +1,103 @@
+<uranium:UraniumContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                            xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+                            x:Class="ActivationLoggerAlpha.WorkingActivation"
+                            Title="Activation In Progress">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="20">
+            <Label x:Name="activationInfoLabel" 
+                   Text="Activation in Progress"
+                   FontAttributes="Bold"
+                   FontSize="22"
+                   HorizontalOptions="Center" />
+
+            <!-- Display Park Info -->
+            <Label x:Name="parkNumberLabel" />
+            <Label x:Name="callsignLabel" />
+            <Label x:Name="parkNameLabel" />
+            <Label x:Name="gridSquareLabel" />
+            <Label x:Name="licenseClassLabel" />
+
+            <!-- Action Buttons -->
+            <Button x:Name="saveForLaterButton" Text="Save Activation For Later" Clicked="OnSaveForLaterClicked"/>
+            <Button x:Name="saveAndCloseButton" Text="Save and Close Activation" Clicked="OnSaveAndCloseClicked"/>
+
+            <!-- New fields for QSO logging -->
+            <!-- New fields for QSO logging -->
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="Hunter Callsign" FontAttributes="Bold"/>
+                <Entry x:Name="hunterCallsignEntry" Placeholder="Hunter Callsign" WidthRequest="120"/>
+                <!-- Frequency -->
+                <Label Text="Frequency (MHz)" FontAttributes="Bold"/>
+                <Entry x:Name="frequencyEntry" Keyboard="Numeric" WidthRequest="120" TextChanged="FrequencyEntry_TextChanged"/>
+                <Picker x:Name="bandPicker" WidthRequest="140" Title="Band">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>160 Meters</x:String>
+                            <x:String>80 Meters</x:String>
+                            <x:String>60 Meters</x:String>
+                            <x:String>40 Meters</x:String>
+                            <x:String>30 Meters</x:String>
+                            <x:String>20 Meters</x:String>
+                            <x:String>17 Meters</x:String>
+                            <x:String>15 Meters</x:String>
+                            <x:String>12 Meters</x:String>
+                            <x:String>10 Meters</x:String>
+                            <x:String>6 Meters</x:String>
+                            <x:String>2 Meters</x:String>
+                            <x:String>1.25 Meters</x:String>
+                            <x:String>70 Centimeters</x:String>
+                            <x:String>33 Centimeters</x:String>
+                            <x:String>23 Centimeters</x:String>
+                            <x:String>13 Centimeters</x:String>
+                            <x:String>5 Centimeters</x:String>
+                            <x:String>3 Centimeters</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Label Text="My Power (W)" FontAttributes="Bold"/>
+                <Entry x:Name="myPowerEntry" Keyboard="Numeric" WidthRequest="80" MaxLength="4" TextChanged="MyPowerEntry_TextChanged"/>
+                <Label x:Name="dateTimeLabel" HorizontalOptions="FillAndExpand"/>
+                <Button x:Name="pauseButton" Text="Pause" BackgroundColor="LightGray" WidthRequest="100" Clicked="PauseButton_Clicked"/>
+                <!-- Mode Picker -->
+                <Picker x:Name="modePicker" WidthRequest="140" Title="Mode">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>SSB</x:String>
+                            <x:String>FT8</x:String>
+                            <x:String>FT4</x:String>
+                            <x:String>CW</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </HorizontalStackLayout>
+
+
+            <!-- Log QSO Button -->
+            <Button x:Name="logQSOButton" Text="Log QSO" HorizontalOptions="Start" Clicked="LogQSOButton_Clicked"/>
+
+            <!-- DataGrid to display QSO records -->
+            <!-- DataGrid to display QSO records -->
+            <CollectionView x:Name="qsosDataGrid">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Label Text="{Binding HunterCallsign}" />
+                            <Label Text="{Binding Frequency}" />
+                            <Label Text="{Binding Band}" />
+                            <Label Text="{Binding MyPower}" />
+                            <Label Text="{Binding Mode}" />
+                            <!-- Add this line -->
+                            <Label Text="{Binding DateTime}" />
+                            <Label Text="{Binding ParkNumber}" />
+                            <Label Text="{Binding ParkName}" />
+                            <Label Text="{Binding Callsign}" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</uranium:UraniumContentPage>

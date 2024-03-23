@@ -1,0 +1,10 @@
+<!-- AppShell.xaml -->
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:pages="clr-namespace:ActivationLoggerAlpha"
+       x:Class="ActivationLoggerAlpha.AppShell">
+
+    <!-- Define routes -->
+    <ShellContent Route="mainPage" ContentTemplate="{DataTemplate pages:MainPage}" />
+    <ShellContent Route="activationPage" ContentTemplate="{DataTemplate pages:ActivationPage}" />
+</Shell>

@@ -1,0 +1,44 @@
+﻿<uranium:UraniumContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                            xmlns:uranium="http://schemas.enisn-projects.io/dotnet/maui/uraniumui"
+                            x:Class="ActivationLoggerAlpha.MainPage"
+                            Title="Activation Logger Alpha"
+                            BackgroundColor="#212121">
+    <VerticalStackLayout Spacing="15" Padding="20"
+                         VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand">
+
+        <Image Source="logo1.webp"
+               VerticalOptions="Start"
+               HorizontalOptions="Center"
+               Aspect="AspectFit"
+               HeightRequest="300"
+               WidthRequest="300"
+               Margin="0,50,0,0"/>
+
+        <HorizontalStackLayout VerticalOptions="End"
+                               HorizontalOptions="CenterAndExpand"
+                               Spacing="20">
+            <Button Text="Start New Activation" 
+                    Clicked="OnStartNewActivationClicked"
+                    BackgroundColor="#6200EE"
+                    TextColor="White"
+                    CornerRadius="10"/>
+            <Button Text="Resume Existing Activation" 
+                    Clicked="OnResumeExistingActivationClicked"
+                    BackgroundColor="#03DAC5"
+                    TextColor="White"
+                    CornerRadius="10"/>
+            <Button Text="View Previous Activations" 
+                    Clicked="OnViewPreviousActivationsClicked"
+                    BackgroundColor="#018786"
+                    TextColor="White"
+                    CornerRadius="10"/>
+            <Button Text="View ADI Files" 
+                    Clicked="RecoverUnsavedActivation_Clicked"
+                    BackgroundColor="#FF9800"
+                    TextColor="White"
+                    CornerRadius="10"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</uranium:UraniumContentPage>
